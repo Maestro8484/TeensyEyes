@@ -1,6 +1,8 @@
 #pragma once
 
-#include "eyes/eyes.h"
+// Scale factor for eyelid travel (1.0 = full lid closure, <1.0 = less coverage)
+// Example: 0.75f = 25% smaller eyelids
+#define EYELID_SCALE 1.40f
 
 // Enable the eye(s) you want to #include -- these are large graphics tables for various eyes:
 //#include "eyes/240x240/anime.h"
