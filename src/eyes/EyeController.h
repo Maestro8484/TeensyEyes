@@ -6,6 +6,10 @@
 #include <cmath>
 #include "eyes.h"
 
+#ifndef EYELID_SCALE
+#define EYELID_SCALE 0.75f   // 25% reduction in eyelid coverage
+#endif
+
 /// Manages the overall behaviour (movement, blinking, pupil size) of one or more eyes.
 template<std::size_t numEyes, typename Disp>
 class EyeController {
@@ -683,6 +687,10 @@ public:
     //auto [upperQ, lowerQ] = computeEyelids(eye);
     auto upperQ = pair.first;
     auto lowerQ = pair.second;
+	
+	upperQ *= EYELID_SCALE;
+	lowerQ *= EYELID_SCALE;
+
 
     // Draw the eye. We temporarily flip the X value if this is the right eye, since it is mirrored
     if (eyeIndex == 0) eye.x = eye.definition->polar.mapRadius * 2 - eye.x;
